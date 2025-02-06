@@ -1,6 +1,6 @@
 "use client";
 
-import { useLoadTodo, useRemoveTodo } from "@/app/hooks";
+import { useCreateImageUrl, useLoadTodo, useRemoveTodo } from "@/app/hooks";
 import useEditTodo from "@/app/hooks/useEditTodo";
 import { useParams } from "next/navigation";
 import { it } from "node:test";
@@ -19,7 +19,9 @@ function Items() {
   if (typeof itemId === "string") {
     const { mutate: edit } = useEditTodo(itemId);
     const { mutate: remove } = useRemoveTodo();
+    const { mutate: uploadImage } = useCreateImageUrl();
     const { data } = useLoadTodo(itemId);
+
     const handleEdit = () => {
       setIsEdit((prev) => !prev);
       if (isEdit) {
@@ -29,6 +31,16 @@ function Items() {
           imageUrl,
         });
         setIsEdit(false);
+      }
+    };
+    const handleImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0];
+      if (file) {
+        const formData = new FormData();
+        formData.append("image", file);
+        uploadImage(formData, {
+          onSuccess: (data) => setImageUrl(data.url),
+        });
       }
     };
 
@@ -52,7 +64,7 @@ function Items() {
             placeholder="image"
             type="file"
             accept="image/png, image/jpeg, image/jpg"
-            onChange={(e) => e.target.files && e.target.files[0]}
+            onChange={handleImage}
           />
         ) : (
           data?.imageUrl && <img src={data.imageUrl} />
