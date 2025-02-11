@@ -6,7 +6,10 @@ const useEditTodo = (id: string) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (data: todo) => editTodo(id, data),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["todos"] }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["todos"] });
+      window.location.href = "/";
+    },
   });
 };
 export default useEditTodo;

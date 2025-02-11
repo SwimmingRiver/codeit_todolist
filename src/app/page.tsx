@@ -10,9 +10,9 @@ export default function Home() {
   const doneList: todo[] = data?.filter((v: todo) => v.isCompleted) || [];
 
   return (
-    <div className="w-[1200px] h-[100vh] px-48">
+    <div className="w-[100%] h-[100%] px-48">
       <Search />
-      <div className="pt-4 flex gap-2">
+      <div className="pt-4 flex gap-2 md:flex-row">
         <TodoList todoList={todoList} />
         <DoneList doneList={doneList} />
       </div>
