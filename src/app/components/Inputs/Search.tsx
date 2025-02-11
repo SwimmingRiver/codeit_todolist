@@ -21,9 +21,9 @@ function Search() {
   };
 
   return (
-    <div className="w-[1016px] flex gap-1">
+    <div className="w-full flex gap-1">
       <input
-        className="w-[846px] h-[56px] rounded-full border-2 border-b-4 border-e-4 border-black p-4"
+        className="w-full h-[56px] rounded-full border-2 border-b-4 border-e-4 border-black p-4"
         placeholder="할 일을 입력해주세요"
         value={inputValue}
         onChange={inputHandler}
@@ -32,10 +32,12 @@ function Search() {
 
       <button
         onClick={submitHandler}
-        className="w-[168px] h-[56px] rounded-full border-2 border-b-4 border-e-4 border-black p-4 bg-color-slate-200 flex items-center justify-center gap-2"
+        className="w-[56px] sm:w-[56px] md:w-[120px] lg:w-[168px] h-[56px] rounded-full border-2 border-b-4 border-e-4 border-black p-4 bg-slate-200 flex items-center justify-center gap-2"
       >
         <Image src={"/plus.svg"} alt="plus" width={15} height={15} />
-        <span>추가하기</span>
+        <span className="hidden md:block md:text-[12px] lg:block">
+          추가하기
+        </span>
       </button>
     </div>
   );

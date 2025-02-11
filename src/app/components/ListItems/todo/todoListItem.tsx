@@ -16,7 +16,7 @@ function TodoListItem({ item }: { item: todo }) {
   };
   return (
     <div
-      className="w-[500px] mt-2 rounded-full border-2 border-black p-2 flex items-center gap-2"
+      className="w-100 mt-2 rounded-full border-2 border-black p-2 flex items-center gap-2"
       key={item.id}
     >
       <Image

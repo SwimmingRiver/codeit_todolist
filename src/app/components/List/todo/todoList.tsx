@@ -6,12 +6,23 @@ import { TodoListItem } from "../../ListItems";
 
 function TodoList({ todoList }: { todoList: todo[] }) {
   return (
-    <div className="w-[580px]">
-      <Image src={"/todo.svg"} alt="todo" width={100} height={100} />
-      {todoList?.map((items: todo) => (
-        <TodoListItem key={items.id} item={items} />
-      ))}
-    </div>
+    <>
+      {todoList ? (
+        <div className="lg:w-[580px] md:w-100 sm:w-100">
+          <Image src={"/todo.svg"} alt="todo" width={100} height={100} />
+          {todoList.map((items: todo) => (
+            <TodoListItem key={items.id} item={items} />
+          ))}
+        </div>
+      ) : (
+        <Image
+          src={"/emptyTodo.svg"}
+          alt="todo empty"
+          width={100}
+          height={100}
+        />
+      )}
+    </>
   );
 }
 
