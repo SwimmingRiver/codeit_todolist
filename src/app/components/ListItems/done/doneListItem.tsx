@@ -17,7 +17,7 @@ function DoneListItem({ item }: { item: todo }) {
   return (
     item.isCompleted && (
       <div
-        className="mt-2 rounded-full border-2 border-black p-2 flex items-center gap-2"
+        className="w-[500px] mt-2 rounded-full border-2 border-black p-2 flex items-center gap-2"
         key={item.id}
       >
         <Image

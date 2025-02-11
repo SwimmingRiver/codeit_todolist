@@ -9,7 +9,7 @@ function TodoList({ todoList }: { todoList: todo[] }) {
     <div className="w-[580px]">
       <Image src={"/todo.svg"} alt="todo" width={100} height={100} />
       {todoList?.map((items: todo) => (
-        <TodoListItem item={items} />
+        <TodoListItem key={items.id} item={items} />
       ))}
     </div>
   );

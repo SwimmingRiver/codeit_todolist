@@ -8,7 +8,7 @@ function DoneList({ doneList }: { doneList: todo[] }) {
     <div>
       <Image src={"/done.svg"} alt="done" width={100} height={100} />
       {doneList?.map((items: todo) => (
-        <DoneListItem item={items} />
+        <DoneListItem key={items.id} item={items} />
       ))}
     </div>
   );
