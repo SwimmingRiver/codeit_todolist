@@ -4,7 +4,7 @@ import { loadTodos } from "../api";
 
 const useLoadTodos = () => {
   return useQuery({
-    queryKey: [""],
+    queryKey: ["todos"],
     queryFn: loadTodos,
   });
 };

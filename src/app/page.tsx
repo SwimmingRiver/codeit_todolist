@@ -6,15 +6,15 @@ import { useLoadTodos } from "./hooks";
 
 export default function Home() {
   const { data } = useLoadTodos();
-  const todoList: todo[] =
-    data?.filter((v: any) => v.isCompleted === false) || [];
+  const todoList: todo[] = data?.filter((v: todo) => !v.isCompleted) || [];
+  const doneList: todo[] = data?.filter((v: todo) => v.isCompleted) || [];
 
   return (
-    <div>
+    <div className="w-[100%] h-[100%] px-48">
       <Search />
-      <div>
+      <div className="pt-4 flex gap-2 md:flex-row">
         <TodoList todoList={todoList} />
-        <DoneList />
+        <DoneList doneList={doneList} />
       </div>
     </div>
   );

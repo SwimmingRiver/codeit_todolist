@@ -1,5 +1,6 @@
 "use client";
 import { useCreateTodo } from "@/app/hooks";
+import Image from "next/image";
 import React, { ChangeEvent, useState } from "react";
 
 function Search() {
@@ -8,6 +9,11 @@ function Search() {
   const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
+  const keyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      submitHandler();
+    }
+  };
   const submitHandler = () => {
     mutate(inputValue);
 
@@ -15,13 +21,22 @@ function Search() {
   };
 
   return (
-    <div>
+    <div className="w-[1016px] flex gap-1">
       <input
+        className="w-[846px] h-[56px] rounded-full border-2 border-b-4 border-e-4 border-black p-4"
         placeholder="할 일을 입력해주세요"
         value={inputValue}
         onChange={inputHandler}
+        onKeyDown={keyDownHandler}
       />
-      <button onClick={submitHandler}>추가하기</button>
+
+      <button
+        onClick={submitHandler}
+        className="w-[168px] h-[56px] rounded-full border-2 border-b-4 border-e-4 border-black p-4 bg-color-slate-200 flex items-center justify-center gap-2"
+      >
+        <Image src={"/plus.svg"} alt="plus" width={15} height={15} />
+        <span>추가하기</span>
+      </button>
     </div>
   );
 }
