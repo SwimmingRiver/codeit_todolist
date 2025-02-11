@@ -14,10 +14,6 @@ function Items() {
   const [imageUrl, setImageUrl] = useState("");
   const { itemId } = useParams();
 
-  if (!itemId) {
-    return "nothing";
-  }
-
   const { mutate: edit } = useEditTodo(`${itemId}`);
   const { mutate: remove } = useRemoveTodo();
   const { mutate: uploadImage } = useCreateImageUrl();
@@ -58,6 +54,7 @@ function Items() {
       isCompleted: !data.isCompleted,
     });
   };
+
   return (
     <div className="w-[1200px] h-[100vh] px-48">
       {isEdit ? (
